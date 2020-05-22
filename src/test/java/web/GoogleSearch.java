@@ -1,13 +1,14 @@
 package web;
 
-import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import configs.MyConfigReader;
 import core.TestBase;
 import pages.GoogleHome;
 import pages.GoogleResults;
@@ -15,22 +16,13 @@ import pages.GoogleResults;
 public class GoogleSearch extends TestBase {
 
 	@Test
-	public void test_1() {
+	public void test_SearchGoogle() {
 		GoogleHome 		googleHome = new GoogleHome(driver);
 		GoogleResults 	googleResults = new GoogleResults(driver);
 		
-		googleHome.suppluSearchText("selenium webdriver");
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		List<WebElement> results = driver.findElements(By.cssSelector("div.r h3"));// ("div.r h3.LC20lb.DKV0Md"));
-		for (WebElement element : results)
-			System.out.println(element.getText());
+		googleHome.suppluSearchText(MyConfigReader.getCfgValue("Web.googlesearch.txt"));
 		
-		int index = googleResults.getResultIndex("What is Selenium WebDriver?");
-		assertEquals(3, index);
+		int index = googleResults.getResultIndex(MyConfigReader.getCfgValue("Web.googlesearch.result"));
+		Assert.assertEquals((index+""),MyConfigReader.getCfgValue("Web.googlesearch.resultnum"));
 	}
 }

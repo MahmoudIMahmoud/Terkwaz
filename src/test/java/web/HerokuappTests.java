@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import configs.MyConfigReader;
 import core.TestBase;
 import pages.DynamicLoading;
 import pages.FileUpload;
@@ -17,12 +18,12 @@ import pages.HerokuappHome;
 
 public class HerokuappTests extends TestBase {
 
-	// @Test
+	@Test
 	public void test_1() {
 		HerokuappHome herokuappHome = new HerokuappHome(driver);
 		FileUpload fileUpload = new FileUpload(driver);
 		herokuappHome.navigateToPage("File Upload");
-		fileUpload.chooseFile("./resources/quality.png");
+		fileUpload.chooseFile(MyConfigReader.getCfgValue("Web.herokuapp.uploadimage"));///("./resources/quality.png");
 		fileUpload.assertUpload();
 	}
 
@@ -34,7 +35,7 @@ public class HerokuappTests extends TestBase {
 		herokuappHome.navigateToPage("Example 2");
 		dynamicLoading.clickStart();
 		dynamicLoading.waitForLoadingToFinish();
-		dynamicLoading.assertForMsgToAppear("Hello World!");
+		dynamicLoading.assertForMsgToAppear(MyConfigReader.getCfgValue("Web.herokuapp.welcomemsg"));//("Hello World!");
 		
 	}
 }
