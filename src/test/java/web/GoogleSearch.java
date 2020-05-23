@@ -9,11 +9,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import configs.MyConfigReader;
-import core.TestBase;
+import core.WebTestBase;
 import pages.GoogleHome;
 import pages.GoogleResults;
 
-public class GoogleSearch extends TestBase {
+public class GoogleSearch extends WebTestBase {
 
 	@Test
 	public void test_SearchGoogle() {

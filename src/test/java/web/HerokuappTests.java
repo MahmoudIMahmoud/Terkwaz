@@ -9,14 +9,14 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import configs.MyConfigReader;
-import core.TestBase;
+import core.WebTestBase;
 import pages.DynamicLoading;
 import pages.FileUpload;
 import pages.GoogleHome;
 import pages.GoogleResults;
 import pages.HerokuappHome;
 
-public class HerokuappTests extends TestBase {
+public class HerokuappTests extends WebTestBase {
 
 	@Test
 	public void test_1() {

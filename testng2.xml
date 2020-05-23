@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-	<test name="GoogleSearch">
-		<parameter name="url" value="https://www.google.com/ncr" />
-		<classes>
-			<class name="web.GoogleSearch" />
-		</classes>
-	</test>
+
 	<test name="herokuapp">
 		<parameter name="url"
 			value="https://the-internet.herokuapp.com/" />
@@ -14,10 +9,4 @@
 			<class name="web.HerokuappTests" />
 		</classes>
 	</test>
-
-	<test name="API-CatFacts">
-		<classes>
-			<class name="api.TestGetRandomCat" />
-		</classes>
-	</test>
-</suite> <!-- Suite -->
+</suite>
