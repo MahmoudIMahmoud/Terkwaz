@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <parameter name="url" value="https://the-internet.herokuapp.com/"/>
+  <test name="GoogleSearch">
+    <parameter name="url" value="https://www.google.com/ncr"/>
+    <classes>
+      <class name="web.GoogleSearch"/>
+    </classes>
+  </test> <!-- GoogleSearch -->
+  <test name="Herokuapp">
+    <parameter name="url" value="https://the-internet.herokuapp.com/"/>
+    <classes>
+      <class name="web.HerokuappTests"/>
+    </classes>
+  </test> <!-- Herokuapp -->
+  <test name="API-CatFacts">
+    <classes>
+      <class name="api.TestGetRandomCat"/>
+    </classes>
+  </test> <!-- API-CatFacts -->
+  <test name="GoogleSearch(failed)">
+    <parameter name="url" value="https://www.google.com/ncr"/>
+    <classes>
+      <class name="api.TestGetRandomCat">
+        <methods>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- api.TestGetRandomCat -->
+      <class name="web.HerokuappTests">
+        <methods>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- web.HerokuappTests -->
+      <class name="web.GoogleSearch">
+        <methods>
+          <include name="test_SearchGoogle"/>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- web.GoogleSearch -->
+    </classes>
+  </test> <!-- GoogleSearch(failed) -->
+</suite> <!-- Failed suite [Suite] -->

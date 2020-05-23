@@ -13,11 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class WebTestBase extends BaseTest{
 	protected WebDriver driver;
@@ -41,25 +37,13 @@ public class WebTestBase extends BaseTest{
 		setupExtentReport(m);
 	}
 
-//	private void setupExtentReport(Method m) {
-//		//	    ExtentHtmlReporter reporter=new ExtentHtmlReporter("./Reports/Results.html");
-//			    ExtentHtmlReporter reporter=new ExtentHtmlReporter("./Results.html");
-//			    reporter.setAppendExisting(true);
-//				
-//			    extent = new ExtentReports();
-//			    
-//			    extent.attachReporter(reporter);
-//			    
-//			    logger=extent.createTest(m.getName());
-//	}
-
 	@AfterMethod
 	public void teardown(ITestResult result, Method m) throws IOException {
 		String resultTxt = result.getStatus() == 1 ? "Passed" : "Failed";
 		String testName = m.getName();
 		System.out.println("The test " + testName + " is fishing with status "
 				+ resultTxt);
-		
+		logger=extent.createTest(testName);
 		String imageFile = "./screenshots/"+testName+".png";
 		utils.ScreenCapture.getScreenShot(driver, imageFile);
 		if(result.getStatus()==ITestResult.FAILURE) {

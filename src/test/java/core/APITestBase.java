@@ -9,10 +9,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
 import configs.MyConfigReader;
 
 public class APITestBase extends BaseTest{
@@ -35,7 +31,7 @@ public class APITestBase extends BaseTest{
 		String resultTxt = result.getStatus() == 1 ? "Passed" : "Failed";
 		String testName = m.getName();
 		System.out.println("The test " + testName + " is fishing with status " + resultTxt);
-
+		logger = extent.createTest(testName);
 		if (result.getStatus() == ITestResult.FAILURE) {
 			logger.fail("Test:" + testName + " <b> <font style='color:red'>failed</b></font> with message:<br>"
 					+ result.getThrowable().getMessage());

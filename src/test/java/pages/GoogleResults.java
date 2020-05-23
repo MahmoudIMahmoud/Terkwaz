@@ -17,14 +17,13 @@ public class GoogleResults extends PageBase {
 	}
 
 	public List<WebElement> getSearchResults() {
-		return driver.findElements(By.cssSelector("div.r h3"));// ("div.r h3.LC20lb.DKV0Md"));
+		return driver.findElements(links);
 	}
 
 	public int getResultIndex(String txt) {
-		List<WebElement> results = driver.findElements(By.cssSelector("div.r h3"));// ("div.r h3.LC20lb.DKV0Md"));
+		List<WebElement> results = driver.findElements(links);
 		int i = 0;
 		for (WebElement element : results) {
-			// System.out.println(element.getText());
 			i++;
 			if(element.getText().contains(txt)) return i;
 		}
