@@ -47,7 +47,11 @@ Selenium webdrivers for [ChromeDriver](https://chromedriver.chromium.org/downloa
 on the project root type:<br>
 	
 	mvn clean test
- 
+
+By default the code uses chrome.<br>
+you can change it to firefox by adding a browser parameter to testng.xml like:
+	<parameter name="browser" value="firefox" />
+	
 ##The outputs are:
 *	**Results.html** is the extent robot format
 *	**test-output** folder for the standard TestNG reports.
